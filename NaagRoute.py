@@ -7,5 +7,5 @@ NaagRoute = [
     (r'/assets/(.*)',
      tornado.web.StaticFileHandler, {'path': 'assets/'}),
     (r"/", naag.JsonHandler),
-    (r"/home", naag.JsonHandler),
+    (r"/home", naag.FileAction),
 ]

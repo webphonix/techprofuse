@@ -12,6 +12,11 @@ import NaagRoute as nr
 from tornado.options import define, options
 define("port", default=8989, help="run on the given port", type=int)
 
+settings = {
+    "cookie_secret": "43oETHKYQDGEYRkA5BEAGDJ5F1Y#7EQnp2XdTP1o/Vo=",
+    "login_url": "/login",
+}
+
 
 def startNaag():
     tornado.ioloop.IOLoop.instance().start()
@@ -24,7 +29,7 @@ def stopNaag():
 
 def main():
     tornado.options.parse_command_line()
-    local_app = tornado.web.Application(handlers=nr.NaagRoute)
+    local_app = tornado.web.Application(handlers=nr.NaagRoute, **settings)
 
     http_server = tornado.httpserver.HTTPServer(local_app)
     http_server.listen(options.port)

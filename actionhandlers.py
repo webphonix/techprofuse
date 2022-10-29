@@ -10,9 +10,9 @@ class BaseAction(tornado.web.RequestHandler):
 
 class FileAction(BaseAction):
     def get(self):
-        if not self.current_user:
-            self.redirect("/login")
-            return
+        # if not self.current_user:
+        #     self.redirect("/login")
+        #     return
         self.render("views/index.html")
 
 
