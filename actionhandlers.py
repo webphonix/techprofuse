@@ -18,7 +18,7 @@ class FileAction(BaseAction):
 
 class JsonHandler(BaseAction):
     def get(self):
-        self.finish({'data': "Hello Guru"})
+        self.finish({'data': "Hello Guru!"})
 
 # class AuthAction(BaseAction):
 #     # @NaagFilters.naagauth
