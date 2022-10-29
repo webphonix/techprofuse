@@ -1,4 +1,5 @@
 tornado==5.1.1
 pandas
+mysql-connector-python-rf
 SQLAlchemy
 pyyaml
