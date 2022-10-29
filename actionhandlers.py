@@ -1,6 +1,7 @@
 import tornado.web
 import json
 import logging
+import os
 
 
 class BaseAction(tornado.web.RequestHandler):
@@ -8,17 +9,28 @@ class BaseAction(tornado.web.RequestHandler):
         return self.get_secure_cookie("username")
 
 
+class StaticFileAction(tornado.web.StaticFileHandler):
+    def initialize(self, path):
+        self.path = path
+
+
 class FileAction(BaseAction):
+    def initialize(self, kargs):
+        self.kargs = kargs
+
     def get(self):
-        # if not self.current_user:
-        #     self.redirect("/login")
-        #     return
-        self.render("views/index.html")
+        print(self.kargs['file'])
+        file = os.path.join("views", self.kargs['file'])
+        self.render(file)
 
 
-class JsonHandler(BaseAction):
+class JsonAction(BaseAction):
+    def initialize(self, data):
+        self.data = data
+
     def get(self):
-        self.finish({'data': "Hello Guru!"})
+        # self.write(self.data)
+        self.finish(self.data)
 
 # class AuthAction(BaseAction):
 #     # @NaagFilters.naagauth
