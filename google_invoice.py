@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+# from mysql import connector
 from sqlalchemy import create_engine, select, MetaData, Table
 import os
 
@@ -15,7 +16,9 @@ db_engine = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
 def get_data():
     sql = "SELECT * FROM GOOGLE_INVOICE;"
     df = pd.read_sql(sql, con=db_engine)
-    return df.head().to_json()
+    # df = df.head()
+    # print(df.to_json(orient='records'))
+    return df.to_json(orient='records')
 
 
-get_data()
+# get_data()

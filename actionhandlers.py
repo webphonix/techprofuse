@@ -26,7 +26,7 @@ class FileAction(BaseAction):
 
 class JsonAction(BaseAction):
     def initialize(self, data):
-        self.data = data
+        self.data = data()
 
     def get(self):
         # self.write(self.data)
