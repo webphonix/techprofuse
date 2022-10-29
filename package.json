@@ -1,0 +1,22 @@
+{
+  "name": "techprofuse",
+  "version": "1.0.0",
+  "description": "Data Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webphonix/techprofuse.git"
+  },
+  "author": "gurudev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webphonix/techprofuse/issues"
+  },
+  "homepage": "https://github.com/webphonix/techprofuse#readme",
+  "dependencies": {
+    "jquery": "^3.6.1"
+  }
+}
