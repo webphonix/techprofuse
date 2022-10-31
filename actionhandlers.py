@@ -8,7 +8,7 @@ class BaseAction(tornado.web.RequestHandler):
     def get_current_user(self):
         return self.get_secure_cookie("username")
 
-
+# This
 class StaticFileAction(tornado.web.StaticFileHandler):
     def initialize(self, path):
         self.path = path
