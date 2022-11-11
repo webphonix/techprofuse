@@ -14,11 +14,11 @@ db_engine = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
 
 
 def get_data():
+    print("get_data called")
     sql = "SELECT * FROM GOOGLE_INVOICE;"
     df = pd.read_sql(sql, con=db_engine)
-    # df = df.head()
-    # print(df.to_json(orient='records'))
     return df.to_json(orient='records')
 
 
-# get_data()
+# pp = get_data()
+# print(pp)

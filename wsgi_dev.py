@@ -36,7 +36,9 @@ def main():
     try:
         # threading.Thread(target=startNaag).start()
         print("...Starting Naag Server...")
+        print("...Running Server on ...", "http://localhost:8989/")
         startNaag()
+
     # signal : CTRL + BREAK on windows or CTRL + C on linux
     except KeyboardInterrupt:
         print("...Stopping Naag Server...")
