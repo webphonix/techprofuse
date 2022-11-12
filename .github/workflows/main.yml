@@ -17,24 +17,13 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
-      # - run: npm ci
 
       - name: 🔨 Install NPM Packages
         run: |
           npm install
           npm ci
-      # - run: printf $DEV_ENV_FILE >> src/.env
-      # - run: printf $DEV_ENV_FILE
-      # - run: cat src/.env
 
-      # - name: Create .secrets file
-      #   uses: ozaytsev86/create-env-file@v1
-      #   with:
-      #     ENV_TEST_API_KEY: ${{ secrets.FTP_SERVER }}
-      #     DB_USERNAME: ${{ env.DB_USERNAME }}
-      #     file_name: .secrets.yaml # optional (default: .env)
-      #     fail_on_empty: false # optional (default: false)
-      - name: "Create secrets file"
+      - name: "Create secrets.yaml file"
         run: |
           touch secrets.yaml
           echo DB_USERNAME: ${{ secrets.DB_USERNAME }} >> secrets.yaml
