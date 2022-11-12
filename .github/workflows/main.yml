@@ -37,8 +37,9 @@ jobs:
       - name: "Create secrets file"
         run: |
           touch .secrets.yaml
-          echo secrets:${{ secrets.* }} >> .secrets.yaml
           echo DB_USERNAME:${{ secrets.DB_USERNAME }} >> .secrets.yaml
+          echo db_password:${{ secrets.db_password }} >> .secrets.yaml
+          echo db_ip:${{ secrets.db_ip }} >> .secrets.yaml
           cat .secrets.yaml
 
       - name: 📂 Sync files
