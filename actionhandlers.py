@@ -85,34 +85,6 @@ class JsonAction(BaseAction):
         self.finish(self.data)
 
 
-# class AuthAction(BaseAction):
-#     # @NaagFilters.naagauth
-#     def get(self):
-#         self.render("views/login.html")
-
-#     def post(self):
-#         uname = self.get_argument("uname")
-#         pwd = self.get_argument("pwd")
-#         if uname == "gurudevkumar51" and pwd == "Hyderabad51#":
-#             self.set_secure_cookie("username", uname)
-#             # self.set_secure_cookie("password", pwd)
-#             self.redirect("/dashboard")
-#         else:
-#             self.redirect("/login")
-
-
-# class HomeAction(BaseAction):
-#     def get(self):
-#         if not self.current_user:
-#             self.redirect("/login")
-#             return
-#         self.render("views/home.html")
-
-# class ViewAction(BaseAction):
-#     def __init__(self):
-#         print (self)
-
-
 # class PartialViewHandler(BaseAction):
 #     def get(self):
 #         pth = self.request.path
