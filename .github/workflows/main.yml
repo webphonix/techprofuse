@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: 18.x
           cache: npm
-      - run: npm ci
+      # - run: npm ci
 
-      - name: 🔨 Build Project
+      - name: 🔨 Install NPM Packages
         run: |
           npm install
           npm ci
@@ -26,13 +26,19 @@ jobs:
       # - run: printf $DEV_ENV_FILE
       # - run: cat src/.env
 
-      - name: Create .secrets file
-        uses: ozaytsev86/create-env-file@v1
-        with:
-          ENV_TEST_API_KEY: ${{ secrets.FTP_SERVER }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          file_name: .secrets.yaml # optional (default: .env)
-          fail_on_empty: false # optional (default: false)
+      # - name: Create .secrets file
+      #   uses: ozaytsev86/create-env-file@v1
+      #   with:
+      #     ENV_TEST_API_KEY: ${{ secrets.FTP_SERVER }}
+      #     DB_USERNAME: ${{ env.DB_USERNAME }}
+      #     file_name: .secrets.yaml # optional (default: .env)
+      #     fail_on_empty: false # optional (default: false)
+      - name: "Create secrets file"
+        run: |
+          touch .secrets.yaml
+          echo DB_USERNAME=${{ env.DB_USERNAME }} >> .secrets.yaml
+          echo FTP_SERVER=${{ secrets.FTP_SERVER }} >> .secrets.yaml
+          cat .secrets.yaml
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
