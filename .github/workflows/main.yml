@@ -30,7 +30,9 @@ jobs:
         uses: ozaytsev86/create-env-file@v1
         with:
           ENV_TEST_API_KEY: ${{ secrets.FTP_SERVER }}
-          ENV_ANOTHER_KEY: ${{ secrets.FTP_USERNAME }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          file_name: .secrets.yaml # optional (default: .env)
+          fail_on_empty: false # optional (default: false)
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
