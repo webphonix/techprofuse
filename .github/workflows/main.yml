@@ -22,6 +22,15 @@ jobs:
         run: |
           npm install
           npm ci
+      # - run: printf $DEV_ENV_FILE >> src/.env
+      # - run: printf $DEV_ENV_FILE
+      # - run: cat src/.env
+
+      - name: Create .secrets file
+        uses: ozaytsev86/create-env-file@v1
+        with:
+          ENV_TEST_API_KEY: ${{ secrets.FTP_SERVER }}
+          ENV_ANOTHER_KEY: ${{ secrets.FTP_USERNAME }}
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
