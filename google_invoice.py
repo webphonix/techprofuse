@@ -18,7 +18,7 @@ with open(file_path, "r") as stream:
         print(exc)
         conf = {}
 
-conf = yaml.safe_load(os.path.expanduser(file_path).read_text())
+# conf = yaml.safe_load(os.path.expanduser(file_path).read_text())
 
 db_username = conf['DB_USERNAME']
 db_password = conf['DB_PASSWORD']
