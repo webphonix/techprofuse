@@ -36,12 +36,12 @@ jobs:
       #     fail_on_empty: false # optional (default: false)
       - name: "Create secrets file"
         run: |
-          touch .secrets.yaml
-          echo DB_USERNAME: ${{ secrets.DB_USERNAME }} >> .secrets.yaml
-          echo DB_PASSWORD: ${{ secrets.DB_PASSWORD }} >> .secrets.yaml
-          echo DB_IP: ${{ secrets.DB_IP }} >> .secrets.yaml
-          echo DB_NAME: ${{ secrets.DB_NAME }} >> .secrets.yaml
-          cat .secrets.yaml
+          touch secrets.yaml
+          echo DB_USERNAME: ${{ secrets.DB_USERNAME }} >> secrets.yaml
+          echo DB_PASSWORD: ${{ secrets.DB_PASSWORD }} >> secrets.yaml
+          echo DB_IP: ${{ secrets.DB_IP }} >> secrets.yaml
+          echo DB_NAME: ${{ secrets.DB_NAME }} >> secrets.yaml
+          cat secrets.yaml
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
