@@ -5,6 +5,7 @@ on:
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
+    environment: DEV
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
@@ -36,8 +37,9 @@ jobs:
       - name: "Create secrets file"
         run: |
           touch .secrets.yaml
-          echo DB_USERNAME=${{ env.DB_USERNAME }} >> .secrets.yaml
-          echo FTP_SERVER=${{ secrets.FTP_SERVER }} >> .secrets.yaml
+          echo DB_USERNAME:${{ env.DB_USERNAME }} >> .secrets.yaml
+          echo FTP_SERVER:${{ secrets.FTP_SERVER }} >> .secrets.yaml
+          echo FTP_SERVER:${{ secrets.DB_USERNAME }} >> .secrets.yaml
           cat .secrets.yaml
 
       - name: 📂 Sync files
