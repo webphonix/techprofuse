@@ -2,21 +2,27 @@ import pandas as pd
 import csv
 import sqlalchemy
 import os
+import yaml
+from pathlib import Path
 
 
-file_name = 'invoice_sheet_aug1_techprofusecom.csv'
+__data_file_name = 'invoice_sheet_aug1_techprofusecom.csv'
+__sec_file_name = 'secrets.yaml'
 directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(directory, "Data", file_name)
+__conf_file_path = os.path.join(directory, __sec_file_name)
 
-database_username = 'webphoni_guru'
-database_password = 'Hyderabad51#'
-database_ip = '168.119.43.146'
-database_name = 'webphoni_techprofuse'
+conf = yaml.safe_load(Path(__conf_file_path).read_text())
+
+
+file_path = os.path.join(directory, "Data", __data_file_name)
+
+db_username = conf['DB_USERNAME']
+db_password = conf['DB_PASSWORD']
+db_ip = conf['DB_IP']
+db_name = conf['DB_NAME']
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
-                                               format(database_username, database_password,
-                                                      database_ip, database_name))
-
-# df_data = pd.DataFrame()
+                                               format(db_username, db_password,
+                                                      db_ip, db_name))
 
 
 def read_csv_file():

@@ -1,23 +1,31 @@
+from pathlib import Path
 import pandas as pd
 import csv
 # from mysql import connector
 from sqlalchemy import create_engine, select, MetaData, Table
 import os
+import yaml
 
-db_username = 'webphoni_guru'
-db_password = 'Hyderabad51#'
-db_ip = '168.119.43.146'
-db_name = 'webphoni_techprofuse'
+file_name = 'secrets.yaml'
+directory = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(directory, file_name)
+conf = yaml.safe_load(Path(file_path).read_text())
+
+db_username = conf['DB_USERNAME']
+db_password = conf['DB_PASSWORD']
+db_ip = conf['DB_IP']
+db_name = conf['DB_NAME']
+
 db_engine = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
                           format(db_username, db_password,
                                  db_ip, db_name))
 
 
-def get_data():
-    # print("get_data called")
-    sql = "SELECT * FROM GOOGLE_INVOICE;"
-    df = pd.read_sql(sql, con=db_engine)
-    return df.to_json(orient='records')
+# def get_data():
+#     # print("get_data called")
+#     sql = "SELECT * FROM GOOGLE_INVOICE;"
+#     df = pd.read_sql(sql, con=db_engine)
+#     return df.to_json(orient='records')
 
 
 # pp = get_data()
