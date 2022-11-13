@@ -1,17 +1,17 @@
 <table id="tbl_google_invoice" class="table">
+    <thead>
+        <tr>
+    <% _.each(Object.keys(tbl_data[0]), function(key){  %>
+        <th><%- key %></th>
+        <% }) %>
+    </tr>
+    </thead>
     <tbody>
     <% _.each(tbl_data, function(n){ %>
         <tr>
-            <td><%- n.Account %></td>
-            <td><%- n.Amount %></td>
-            <td><%- n['Billing ID'] %></td>
-            <td><%- n['Currency'] %></td>
-            <td><%- n['Description'] %></td>
-            <td><%- n['Domain name'] %></td>
-            <td><%- n['Start date'] %></td>
-            <td><%- n['End date'] %></td>
-            <td><%- n['Order name'] %></td>
-            <td><%- n['PO number'] %></td>
+            <% _.each(Object.keys(n), function(key){  %>
+                <td><%- n[key] %></td>
+                <% }) %>
         </tr>
         <% }) %>
     </tbody>

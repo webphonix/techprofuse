@@ -1,0 +1,39 @@
+<div> 
+    <% _.each(Object.keys(tbl_data[0]), function(key){  %>
+        <%- key %>
+        <% }) %>
+</div>
+
+<table id="tbl_google_invoice" class="table">
+    <thead>
+        <tr>
+            <th>Account</th>
+            <th>Amount</th>
+            <th>Billing ID</th>
+            <th>Currency</th>
+            <th>Description</th>
+            <th>Domain name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Order name</th>
+            <th>PO number</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    <% _.each(tbl_data, function(n){ %>
+        <tr>
+            <td><%- n.Account %></td>
+            <td><%- n.Amount %></td>
+            <td><%- n['Billing ID'] %></td>
+            <td><%- n['Currency'] %></td>
+            <td><%- n['Description'] %></td>
+            <td><%- n['Domain name'] %></td>
+            <td><%- n['Start date'] %></td>
+            <td><%- n['End date'] %></td>
+            <td><%- n['Order name'] %></td>
+            <td><%- n['PO number'] %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>

@@ -24,6 +24,7 @@
 </div>
 <script>
     $(document).ready( function () {
+        $('.table').DataTable();
         
 } );
     $.ajax({
@@ -31,11 +32,12 @@
         type: "GET",
         success: function(result){
             const obj = JSON.parse(result);
-            // $$("#my_temp").jlate({ tbl_data: obj });
-            jlate("#my_temp").on("jlate", { tbl_data: obj }, function (d) {
-                console.log(d);
-                $('#table_id').DataTable();
-            });
+            $$("#my_temp").jlate({ tbl_data: obj });
+            $('.table').DataTable();
+            // jlate("#my_temp").on("jlate", { tbl_data: obj }, function (d) {
+            //     // console.log(d);
+            //     // $('#tbl_google_invoice').DataTable();
+            // });
             
             }
     });

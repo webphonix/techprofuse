@@ -9,17 +9,11 @@ class BaseAction(tornado.web.RequestHandler):
         return u"/login"
 
     def get_current_user(self):
-        # return self.get_secure_cookie("username")
         user_json = self.get_secure_cookie("user")
         if user_json:
             return tornado.escape.json_decode(user_json)
         else:
             return None
-            # self.redirect("/login")
-            # return
-        # if not self.current_user:
-        #     self.redirect("/login")
-        #     return
 
 
 class StaticFileAction(tornado.web.StaticFileHandler):
@@ -35,7 +29,6 @@ class FileAction(BaseAction):
         if not self.current_user:
             self.redirect("/login")
             return
-        print(self.kargs['file'])
         file = os.path.join("views", self.kargs['file'])
         self.render(file)
 
@@ -52,9 +45,9 @@ class AuthAction(BaseAction):
     def post(self):
         email = self.get_argument("username", "")
         password = self.get_argument("password", "")
-        if email == "gurudevk@techprofuse.com" and password == "admin123":
+        if email == "gurudevk@techprofuse.com" and password == "Hyderabad51#":
             self.set_current_user(email)
-            self.redirect(self.get_argument("next", u"/"))
+            self.redirect(self.get_argument("next", u"/index"))
         else:
             error_msg = u"?error=" + \
                 tornado.escape.url_escape("Login incorrect.")
