@@ -16,6 +16,7 @@
 <body>
 
 <div>This is index page</div>
+<a href="/logout">Logout</a>
 
 <div class="">
     <jlate id="my_temp" src="templates/table.html" type="template">
@@ -25,8 +26,8 @@
 <script>
     $(document).ready( function () {
         $('.table').DataTable();
-        
-} );
+    });
+
     $.ajax({
         url: "/",
         type: "GET",

@@ -45,7 +45,7 @@ class AuthAction(BaseAction):
     def post(self):
         email = self.get_argument("username", "")
         password = self.get_argument("password", "")
-        if email == "gurudevk@techprofuse.com" and password == "Hyderabad51#":
+        if email == "gurudevk@techprofuse.com" and password == "hs@zZDW9d8C0":
             self.set_current_user(email)
             self.redirect(self.get_argument("next", u"/index"))
         else:
