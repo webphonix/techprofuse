@@ -47,7 +47,7 @@ class AuthAction(BaseAction):
         password = self.get_argument("password", "")
         if email == "gurudevk@techprofuse.com" and password == "hs@zZDW9d8C0":
             self.set_current_user(email)
-            self.redirect(self.get_argument("next", u"/index"))
+            self.redirect(self.get_argument("next", u"/home"))
         else:
             error_msg = u"?error=" + \
                 tornado.escape.url_escape("Login incorrect.")
