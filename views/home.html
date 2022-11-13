@@ -16,6 +16,9 @@
     /* .dt-tbl{
         width:100%;
     } */
+    /* table.dataTable td {
+  font-size: 1em;
+} */
 </style>
 <body>
 
@@ -62,7 +65,7 @@
             <thead>
                 <tr>
                     <th>Domain name</th>
-                    <th>Description</th>
+                    <!-- <th>Description</th> -->
                     <th>Start date</th>
                     <th>End date</th>
                     <th>Quantity</th>
@@ -75,7 +78,7 @@
             <tfoot>
                 <tr>
                     <th></th>
-                    <th></th>
+                    <!-- <th></th> -->
                     <th></th>
                     <th></th>
                     <th></th>
@@ -91,7 +94,7 @@
 <script>
     let column = [	
         { data: "Domain name" },
-        { data: "Description" },
+        // { data: "Description" },
         { data: "Start date" },
         { data: "End date" },
         { data: "Quantity" },
@@ -103,7 +106,6 @@
     $(document).ready(function () {
         all_data = load_data("/", false);
         dtbl = $("#tbl_google_invoice").DataTable({
-                    responsive: true,
                     bSortable: true,
                     data: all_data,
                     columns: column,
@@ -113,11 +115,9 @@
                     paging: false,
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        $(api.column(8).footer()).html(
-                            api.column(8).data().reduce(function ( a, b ) {
-                                return a + b;
-                            }, 0)
-                        );
+                        var sum = api.column(7).data().reduce((partialSum, a) => partialSum + a, 0)
+                        sum = (sum + (sum * 18/100))
+                        $(api.column(7).footer()).html(sum.toFixed(2));
                     }
                 });
 });
